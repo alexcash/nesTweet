@@ -92,11 +92,16 @@ ul{
 }
 
 li{
-	display:block;
+	margin: 10px;
+	height: 48px;
+	display: block;
 }
 
 img{
-	float:left;
+	height:48px;
+	width: 48px;
+	margin-right: 4px;
+	float: left;
 }
 
 
