@@ -21,12 +21,6 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-    {{#view App.MyView}}
-      <h1>Hello world!</h1>
-    {{/view}}
-  </script>
-
-  <script type="text/x-handlebars">
 	{{#collection contentBinding="App.tweetController" tagName="ul"}}
 		<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
 		{{content.text}}
