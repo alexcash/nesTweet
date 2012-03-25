@@ -21,7 +21,10 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-	{{#collection contentBinding="App.tweetController" tagName="ul"}}
+	term1: {{view SC.TextField valueBinding="App.searchController.term1"}}
+	term2: {{view SC.TextField valueBinding="App.searchController.term2"}}
+  
+	{{#collection contentBinding="App.display" tagName="ul"}}
 		<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
 		<h2>{{content.username}}</h2>
 		{{content.text}}
