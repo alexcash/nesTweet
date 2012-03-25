@@ -8,8 +8,8 @@ tweet = Ember.Object.extend({
 });
 
 App.searchController = Ember.Object.create({
-	term1: "nest",
-	term2: "thermostat",
+	term1: null,
+	term2: null,
 	
 	allTerms: function(){
 		return this.get('term1') + '%20' + this.get('term2');
@@ -34,3 +34,7 @@ App.searchController.addObserver("allTerms", function(){
 App.display = Ember.ArrayProxy.create({
 	content: [],
 });
+
+
+App.searchController.set("term1", "nest");
+App.searchController.set("term2", "thermostat");
