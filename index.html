@@ -20,6 +20,7 @@
   <![endif]-->
 </head>
 <body>
+<div id="container">
   <script type="text/x-handlebars">
 	term1: {{view SC.TextField valueBinding="App.searchController.term1"}}
 	term2: {{view SC.TextField valueBinding="App.searchController.term2"}}
@@ -30,7 +31,7 @@
 		{{content.text}}
 	{{/collection}}
   </script>
-
+</div>
 
   <script src="js/libs/jquery-1.7.2.js"></script>
   <script src="js/libs/ember-0.9.5.js"></script>

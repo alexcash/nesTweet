@@ -92,8 +92,7 @@ ul{
 }
 
 li{
-	margin: 10px;
-	height: 48px;
+	clear: both;
 	display: block;
 }
 
@@ -102,6 +101,10 @@ img{
 	width: 48px;
 	margin-right: 4px;
 	float: left;
+}
+
+#container{
+	width:95%;
 }
 
 
