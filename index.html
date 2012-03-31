@@ -20,19 +20,26 @@
   <![endif]-->
 </head>
 <body>
-<div id="container">
-  <script type="text/x-handlebars">
-	term1: {{view SC.TextField valueBinding="App.searchController.term1"}}
-	term2: {{view SC.TextField valueBinding="App.searchController.term2"}}
+	<nav>
+		<h1>Search Parameters:</h1>
+		<script type="text/x-handlebars">
+		<ul>
+		<li>term1: {{view Ember.TextField valueBinding="App.searchController.term1"}}</li>
+		<li>term2: {{view Ember.TextField valueBinding="App.searchController.term2"}}</li>
+		</ul>
+		</script>
+	</nav>
   
-	{{#collection contentBinding="App.display" tagName="ul"}}
-		<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
-		<h2>{{content.username}}</h2>
-		{{content.text}}
-	{{/collection}}
-  </script>
-</div>
-
+	<section>
+	<script type="text/x-handlebars">
+		{{#collection contentBinding="App.display" tagName="ul"}}
+			<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
+			<h2>{{content.username}}</h2>
+			{{content.text}}
+		{{/collection}}
+	</script>
+	</section>
+	
   <script src="js/libs/jquery-1.7.2.js"></script>
   <script src="js/libs/ember-0.9.5.js"></script>
   <script src="js/app.js"></script>
