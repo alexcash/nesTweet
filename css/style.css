@@ -86,6 +86,10 @@ a:hover { color: #036; }
     \\ ========================================== //
 */
 
+body{
+	min-width: 320px;
+}
+
 header{
 	background-image: linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
 	background-image: -o-linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
@@ -134,7 +138,7 @@ ul{
 
 li{
 	clear: both;
-	margin: 10px 0px 10px 0px;
+	margin 10 auto;
 	display: block;
 }
 
