@@ -20,8 +20,12 @@
   <![endif]-->
 </head>
 <body>
+	<header>
+		<h1>nesTweet</h1>
+	</header>
+	<div id="container">
 	<nav>
-		<h1>Search Parameters:</h1>
+		<h2>Search Parameters:</h2>
 		<script type="text/x-handlebars">
 		<ul>
 		<li>term1: {{view Ember.TextField valueBinding="App.searchController.term1"}}</li>
@@ -39,6 +43,7 @@
 		{{/collection}}
 	</script>
 	</section>
+	</div>
 	
   <script src="js/libs/jquery-1.7.2.js"></script>
   <script src="js/libs/ember-0.9.5.js"></script>

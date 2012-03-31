@@ -86,6 +86,32 @@ a:hover { color: #036; }
     \\ ========================================== //
 */
 
+header{
+	background-image: linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(143,158,252) 0%, rgb(0,98,255) 50%, rgb(143,158,252) 100%);
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 10px;
+	text-align:right;
+	width:95%;
+	clear:both;
+	padding: 10px;
+	margin: 20px auto 20px auto;
+}
+
+#container{
+	width:95%;
+	margin: 0 auto;
+}
+
+header h1{
+	font-size: 300%;
+}
+
 nav{
 	display:block;
 	float:left;
