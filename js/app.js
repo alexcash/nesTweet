@@ -40,4 +40,5 @@ App.searchController.set("term2", "thermostat");
 
 twttr.anywhere(function (T) {
 	T.hovercards();
+	T("#tbox").tweetBox();
 });
