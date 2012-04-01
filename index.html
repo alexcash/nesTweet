@@ -15,6 +15,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css?v=2">
 
+  <script src="http://platform.twitter.com/anywhere.js?id=DQqHHHa9WcxJmsQ3yarag&v=1"></script>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -38,7 +39,7 @@
 	<script type="text/x-handlebars">
 		{{#collection contentBinding="App.display" tagName="ul"}}
 			<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
-			<h2>{{content.username}}</h2>
+			<h2>{{content.username}}       <i>@{{content.user}}</i></h2>
 			{{content.text}}
 		{{/collection}}
 	</script>

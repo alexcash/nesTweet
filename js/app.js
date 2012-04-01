@@ -35,6 +35,9 @@ App.display = Ember.ArrayProxy.create({
 	content: [],
 });
 
-
 App.searchController.set("term1", "nest");
 App.searchController.set("term2", "thermostat");
+
+twttr.anywhere(function (T) {
+	T.hovercards();
+});
