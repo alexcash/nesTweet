@@ -5,6 +5,21 @@ tweet = Ember.Object.extend({
 	username: null,
 	profileImageUrl: null,
 	text: null,
+	ctext:function(){
+		if (this.text) {
+			var curtext = this.get('text').replace(
+				/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+				function(url){
+					var full_url = url;
+					if (!full_url.match('^https?:\/\/')) {
+						full_url = 'http://' + full_url;
+					}
+					return '<a href="' + full_url + '">' + url + '</a>';
+				}
+			);
+		}
+		return curtext;
+	}.property('text')
 });
 
 App.searchController = Ember.Object.create({
@@ -22,10 +37,10 @@ App.searchController.addObserver("allTerms", function(){
 	$.getJSON( url, function(data){
 		$(data.results).each(function(){
 			var curTweet = tweet.create();
-			curTweet.user = this.from_user;
-			curTweet.username = this.from_user_name;
-			curTweet.profileImageUrl = this.profile_image_url;
-			curTweet.text = this.text;
+			curTweet.set('user', this.from_user);
+			curTweet.set('username', this.from_user_name);
+			curTweet.set('profileImageUrl', this.profile_image_url);
+			curTweet.set('text', this.text);
 			App.display.pushObject(curTweet);
 		});
 	});
@@ -39,6 +54,11 @@ App.searchController.set("term1", "nest");
 App.searchController.set("term2", "thermostat");
 
 twttr.anywhere(function (T) {
+	T("#user").hovercards({
+		username: function(node) {
+			return node.title;
+		}
+	});
 	T.hovercards();
 	T("#tbox").tweetBox();
 });

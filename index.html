@@ -26,7 +26,7 @@
 	</header>
 	<div id="container">
 	<nav>
-		<h2>Search Parameters:</h2>
+		<b>Search Parameters:</b><br>
 		<script type="text/x-handlebars">
 		<ul>
 		<li>term1: {{view Ember.TextField valueBinding="App.searchController.term1"}}</li>
@@ -40,8 +40,8 @@
 	<script type="text/x-handlebars">
 		{{#collection contentBinding="App.display" tagName="ul"}}
 			<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
-			<h2>{{content.username}}       <i>@{{content.user}}</i></h2>
-			{{content.text}}
+			<span id="user" {{bindAttr title="content.user"}}>{{content.username}}</span><br>
+			{{content.ctext}}
 		{{/collection}}
 	</script>
 	</section>
