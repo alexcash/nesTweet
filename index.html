@@ -48,13 +48,13 @@
 	<script type="text/x-handlebars">
 		{{#collection contentBinding="App.display" tagName="ul"}}
 			<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
-			<span id="user" {{bindAttr title="content.user"}}>{{content.username}}</span><br>
-			{{{content.ctext}}}
 			<div class="tweetmenu">
 				<a {{bindAttr href="content.retweet"}} class="rt"></a>
 				<a {{bindAttr href="content.favorite"}} class="fav"></a>
 				<a {{bindAttr href="content.reply"}} class="reply"></a>
 			</div>
+			<span id="user" {{bindAttr title="content.user"}}>{{content.username}}</span><br>
+			{{{content.ctext}}}
 		{{/collection}}
 	</script>
 	</section>

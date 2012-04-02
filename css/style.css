@@ -142,6 +142,9 @@ li{
 	display: block;
 }
 
+li:nth-child(odd) {background: #CCC}
+li:nth-child(even) {background: #FFF}
+
 img{
 	height:48px;
 	width: 48px;
