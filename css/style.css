@@ -138,7 +138,7 @@ ul{
 
 li{
 	clear: both;
-	height:100%;
+	min-height:52px;
 	padding: 5px;
 	display: block;
 }
@@ -168,7 +168,8 @@ img{
 }
 
 #user{
-	font-size: 125%;
+	font-size: 130%;
+	font-weight:bold;
 }
 
 .twitter-anywhere-tweet-box{
@@ -223,7 +224,13 @@ img{
 	float:left;
 }
 
-
+em{
+	vertical-align: bottom;
+	font-style: itallic;
+	font-size: 80%;
+	float:right;
+	margin-right: 5px;
+}
 
 
 

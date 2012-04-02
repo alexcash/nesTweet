@@ -75,6 +75,7 @@
 				<a {{bindAttr href="content.favorite"}} class="fav"></a>
 				<a {{bindAttr href="content.reply"}} class="reply"></a>
 			</div>
+			<em>{{content.timeAbbr}}</em>
 			<span id="user" {{bindAttr title="content.user"}}>{{content.username}}</span><br>
 			{{{content.ctext}}}
 		{{/collection}}
