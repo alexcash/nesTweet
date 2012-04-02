@@ -6,6 +6,17 @@ tweet = Ember.Object.extend({
 	profileImageUrl: null,
 	text: null,
 	id: null,
+	time: null,
+	
+	timeAbbr:function(){	
+		var date = new Date(Date.parse(this.get('time'))).toLocaleString().substr(0, 16);
+		var hour = date.substr(-5, 2);
+		var ampm = hour<12 ? ' AM' : ' PM';
+		if (hour>12) hour-= 12;
+		if (hour==0) hour = 12;
+		return date.substr(0, 11)+' - ' + hour + date.substr(13) + ampm;
+	}.property('time'),
+	
 	ctext:function(){
 		if (this.text) {
 			var curtext = this.get('text').replace(
@@ -54,6 +65,7 @@ App.searchController = Ember.Object.create({
 				curTweet.set('profileImageUrl', this.profile_image_url);
 				curTweet.set('text', this.text);
 				curTweet.set('id', this.id_str);
+				curTweet.set('time', this.created_at);
 				App.display.pushObject(curTweet);
 			});
 		});
@@ -70,6 +82,7 @@ App.searchController = Ember.Object.create({
 				curTweet.set('profileImageUrl', this.user.profile_image_url);
 				curTweet.set('text', this.text);
 				curTweet.set('id', this.user.id_str);
+				curTweet.set('time', this.created_at);
 				App.display.pushObject(curTweet);
 			});
 		});
