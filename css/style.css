@@ -138,12 +138,18 @@ ul{
 
 li{
 	clear: both;
-	padding-bottom: 20px;
+	height:100%;
+	padding: 5px;
 	display: block;
 }
 
-li:nth-child(odd) {background: #CCC}
-li:nth-child(even) {background: #FFF}
+section li:nth-child(odd){
+	background: #CCC;
+}
+
+section li:nth-child(even){
+	background: #FFF;
+}
 
 img{
 	height:48px;

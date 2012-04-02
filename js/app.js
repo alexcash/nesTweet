@@ -37,36 +37,62 @@ tweet = Ember.Object.extend({
 });
 
 App.searchController = Ember.Object.create({
-	term1: null,
-	term2: null,
+	rpp: 20,
+	term1: 'nest',
+	term2: 'thermostat',
+	search: function(){
+		App.display.set("content", []);
+		var url = "http://search.twitter.com/search.json?q=" + this.get('allTerms') + "&rpp=" + this.get('rpp') + "&result_type=recent&callback=?";
+		$.getJSON( url, function(data){
+			$(data.results).each(function(){
+				var curTweet = tweet.create();
+				curTweet.set('user', this.from_user);
+				curTweet.set('username', this.from_user_name);
+				curTweet.set('profileImageUrl', this.profile_image_url);
+				curTweet.set('text', this.text);
+				curTweet.set('id', this.id_str);
+				App.display.pushObject(curTweet);
+			});
+		});
+	},
+	
 	
 	allTerms: function(){
 		return this.get('term1') + '%20' + this.get('term2');
 	}.property('term1', 'term2'),
 });
 
-App.searchController.addObserver("allTerms", function(){
-	App.display.set("content", []);
-	var url = "http://search.twitter.com/search.json?q=" + this.get('allTerms') + "&rpp=20&include_entities=true&result_type=mixed&callback=?";
-	$.getJSON( url, function(data){
-		$(data.results).each(function(){
-			var curTweet = tweet.create();
-			curTweet.set('user', this.from_user);
-			curTweet.set('username', this.from_user_name);
-			curTweet.set('profileImageUrl', this.profile_image_url);
-			curTweet.set('text', this.text);
-			curTweet.set('id', this.id_str);
-			App.display.pushObject(curTweet);
-		});
-	});
+
+
+App.term1View = Ember.TextField.extend(Ember.TargetActionSupport,{
+	valueBinding: 'App.searchController.term1',
+	
+	insertNewline: function(){
+		this.triggerAction();
+	}
+});
+
+App.term2View = Ember.TextField.extend(Ember.TargetActionSupport,{
+	valueBinding: 'App.searchController.term2',
+	
+	insertNewline: function(){
+		this.triggerAction();
+	}
+});
+
+App.rppView = Ember.TextField.extend(Ember.TargetActionSupport,{
+	valueBinding: 'App.searchController.rpp',
+	
+	insertNewline: function(){
+		this.triggerAction();
+	}
 });
 
 App.display = Ember.ArrayProxy.create({
 	content: [],
 });
 
-App.searchController.set("term1", "nest");
-App.searchController.set("term2", "thermostat");
+App.searchController.search();
 
 twttr.anywhere(function (T) {
 	T("#user").hovercards({

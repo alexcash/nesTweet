@@ -38,8 +38,14 @@
 		<b>Search Parameters:</b><br>
 		<script type="text/x-handlebars">
 		<ul>
-		<li>term1: {{view Ember.TextField valueBinding="App.searchController.term1"}}</li>
-		<li>term2: {{view Ember.TextField valueBinding="App.searchController.term2"}}</li>
+		<li>term1: {{view App.term1View target="App.searchController" action="search"}}</li>
+		<li>term2: {{view App.term2View target="App.searchController" action="search"}}</li>
+		<li># of results: {{view App.rppView target="App.searchController" action="search"}}</li>
+		<li>
+			{{#view Ember.Button target="App.searchController" action="search" }}
+				Search
+			{{/view}}
+		</li>
 		</ul>
 		</script>
 	</nav>
@@ -60,8 +66,8 @@
 	</section>
 	</div>
 	
-  <script src="js/libs/jquery-1.7.2.js"></script>
-  <script src="js/libs/ember-0.9.5.js"></script>
+  <script src="js/libs/jquery-1.7.2.min.js"></script>
+  <script src="js/libs/ember-0.9.5.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
