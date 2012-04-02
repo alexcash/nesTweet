@@ -38,8 +38,11 @@ tweet = Ember.Object.extend({
 
 App.searchController = Ember.Object.create({
 	rpp: 20,
-	term1: 'nest',
+	term1: 'learning',
 	term2: 'thermostat',
+	user: '@nest',
+	count: 20,
+	
 	search: function(){
 		App.display.set("content", []);
 		var url = "http://search.twitter.com/search.json?q=" + this.get('allTerms') + "&rpp=" + this.get('rpp') + "&result_type=recent&callback=?";
@@ -56,10 +59,26 @@ App.searchController = Ember.Object.create({
 		});
 	},
 	
+	searchByUser: function(){
+		App.display.set("content", []);
+		var url = "https://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + this.get('user') + "&include_rts=true&count="+  this.get('count') + "&callback=?";
+		$.getJSON( url, function(data){
+			$(data).each(function(){
+				var curTweet = tweet.create();
+				curTweet.set('user', this.user.name);
+				curTweet.set('username', this.user.screen_name);
+				curTweet.set('profileImageUrl', this.user.profile_image_url);
+				curTweet.set('text', this.text);
+				curTweet.set('id', this.user.id_str);
+				App.display.pushObject(curTweet);
+			});
+		});
+	},
+	
 	
 	allTerms: function(){
 		return this.get('term1') + '%20' + this.get('term2');
-	}.property('term1', 'term2'),
+	}.property('term1', 'term2')
 });
 
 
@@ -88,11 +107,28 @@ App.rppView = Ember.TextField.extend(Ember.TargetActionSupport,{
 	}
 });
 
+App.userView = Ember.TextField.extend(Ember.TargetActionSupport,{
+	valueBinding: 'App.searchController.user',
+	
+	insertNewline: function(){
+		this.triggerAction();
+	}
+});
+
+App.countView = Ember.TextField.extend(Ember.TargetActionSupport,{
+	valueBinding: 'App.searchController.count',
+	
+	insertNewline: function(){
+		this.triggerAction();
+	}
+});
+
 App.display = Ember.ArrayProxy.create({
 	content: [],
 });
 
 App.searchController.search();
+
 
 twttr.anywhere(function (T) {
 	T("#user").hovercards({
@@ -100,6 +136,16 @@ twttr.anywhere(function (T) {
 			return node.title;
 		}
 	});
+	
 	T.hovercards();
-	T("#tbox").tweetBox();
+	
+	T("#login").connectButton({
+	  authComplete: function(user) {
+		$("#login").hide();
+	  },
+	  signOut: function() {
+		$("#login").show();
+	  }
+	});
+
 });

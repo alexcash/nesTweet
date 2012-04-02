@@ -35,7 +35,8 @@
 	</header>
 	<div id="container">
 	<nav>
-		<b>Search Parameters:</b><br>
+		<span id="login"></span>
+		<b>Search by Terms:</b><br>
 		<script type="text/x-handlebars">
 		<ul>
 		<li>term1: {{view App.term1View target="App.searchController" action="search"}}</li>
@@ -48,6 +49,20 @@
 		</li>
 		</ul>
 		</script>
+		
+		<b>Search by User:</b><br>
+		<script type="text/x-handlebars">
+		<ul>
+		<li>term1: {{view App.userView target="App.searchController" action="searchByUser"}}</li>
+		<li># of results: {{view App.countView target="App.searchController" action="searchByUser"}}</li>
+		<li>
+			{{#view Ember.Button target="App.searchController" action="searchByUser" }}
+				Search
+			{{/view}}
+		</li>
+		</ul>
+		</script>
+		
 	</nav>
   
 	<section>
@@ -67,7 +82,7 @@
 	</div>
 	
   <script src="js/libs/jquery-1.7.2.min.js"></script>
-  <script src="js/libs/ember-0.9.5.min.js"></script>
+  <script src="js/libs/ember-0.9.6.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
