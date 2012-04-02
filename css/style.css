@@ -163,24 +163,52 @@ img{
 
 .rt{
 	display:block;
-	clear:both;
 	width:16px;
 	height:16px;
 	background-image:url("../img/retweet.png");
 }
 
 .rt:hover{
-	display:block;
-	width:16px;
-	height:16px;
 	background-image:url("../img/retweet_hover.png");
 }
 .rt:active{
+	background-image:url("../img/retweet_on.png");
+}
+
+.fav{
 	display:block;
 	width:16px;
 	height:16px;
-	background-image:url("../img/retweet_on.png");
+	background-image:url("../img/favorite.png");
 }
+
+.fav:hover{
+	background-image:url("../img/favorite_hover.png");
+}
+.fav:active{
+	background-image:url("../img/favorite_on.png");
+}
+
+.reply{
+	display:block;
+	width:16px;
+	height:16px;
+	background-image:url("../img/reply.png");
+}
+
+.reply:hover{
+	background-image:url("../img/reply_hover.png");
+}
+
+.tweetmenu{
+	padding: 0;
+	float: right;
+}
+
+.tweetmenu a{
+	float:left;
+}
+
 
 
 

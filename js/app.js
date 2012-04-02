@@ -6,9 +6,6 @@ tweet = Ember.Object.extend({
 	profileImageUrl: null,
 	text: null,
 	id: null,
-	replied: false,
-	retweeted: false,
-	favorited: false,
 	ctext:function(){
 		if (this.text) {
 			var curtext = this.get('text').replace(
@@ -26,9 +23,17 @@ tweet = Ember.Object.extend({
 	}.property('text'),
 	
 	retweet:function(){
-		this.set('retweeted', true);
 		return 'https://twitter.com/intent/retweet?tweet_id=' + this.get('id');
+	}.property('id'),
+	
+	favorite:function(){
+		return 'https://twitter.com/intent/favorite?tweet_id=' + this.get('id');
+	}.property('id'),
+	
+	reply:function(){
+		return 'https://twitter.com/intent/tweet?in_reply_to=' + this.get('id');
 	}.property('id')
+	
 });
 
 App.searchController = Ember.Object.create({
