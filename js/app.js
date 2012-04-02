@@ -5,6 +5,10 @@ tweet = Ember.Object.extend({
 	username: null,
 	profileImageUrl: null,
 	text: null,
+	id: null,
+	replied: false,
+	retweeted: false,
+	favorited: false,
 	ctext:function(){
 		if (this.text) {
 			var curtext = this.get('text').replace(
@@ -19,7 +23,12 @@ tweet = Ember.Object.extend({
 			);
 		}
 		return curtext;
-	}.property('text')
+	}.property('text'),
+	
+	retweet:function(){
+		this.set('retweeted', true);
+		return 'https://twitter.com/intent/retweet?tweet_id=' + this.get('id');
+	}.property('id')
 });
 
 App.searchController = Ember.Object.create({
@@ -41,6 +50,7 @@ App.searchController.addObserver("allTerms", function(){
 			curTweet.set('username', this.from_user_name);
 			curTweet.set('profileImageUrl', this.profile_image_url);
 			curTweet.set('text', this.text);
+			curTweet.set('id', this.id_str);
 			App.display.pushObject(curTweet);
 		});
 	});

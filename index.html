@@ -16,6 +16,15 @@
   <link rel="stylesheet" href="css/style.css?v=2">
 
   <script src="http://platform.twitter.com/anywhere.js?id=DQqHHHa9WcxJmsQ3yarag&v=1"></script>
+  <script type="text/javascript" charset="utf-8">
+		window.twttr = (function (d,s,id) {
+			var t, js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+			js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+			return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+		}(document, "script", "twitter-wjs"));
+	</script>
+
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -41,6 +50,7 @@
 			<img {{bindAttr src="content.profileImageUrl"}} alt"avatar">
 			<span id="user" {{bindAttr title="content.user"}}>{{content.username}}</span><br>
 			{{{content.ctext}}}
+			<a {{bindAttr href="content.retweet"}} class="rt"></a>
 		{{/collection}}
 	</script>
 	</section>

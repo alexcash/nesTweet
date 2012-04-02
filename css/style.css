@@ -161,8 +161,26 @@ img{
 	width:100%;
 }
 
+.rt{
+	display:block;
+	clear:both;
+	width:16px;
+	height:16px;
+	background-image:url("../img/retweet.png");
+}
 
-
+.rt:hover{
+	display:block;
+	width:16px;
+	height:16px;
+	background-image:url("../img/retweet_hover.png");
+}
+.rt:active{
+	display:block;
+	width:16px;
+	height:16px;
+	background-image:url("../img/retweet_on.png");
+}
 
 
 
