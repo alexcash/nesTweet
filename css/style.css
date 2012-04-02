@@ -101,14 +101,14 @@ header{
 	box-shadow: 0 0 5px #888;
 	border-radius: 10px;
 	text-align:right;
-	width:95%;
+	width:700px;
 	clear:both;
 	padding: 10px;
 	margin: 20px auto 20px auto;
 }
 
 #container{
-	width:95%;
+	width:700px;
 	margin: 0 auto;
 }
 
@@ -151,15 +151,20 @@ section li:nth-child(even){
 	background: #FFF;
 }
 
+section li{
+	-webkit-transition: -webkit-transform 0.6s ease-in-out;
+}
+
+section li:hover{
+	-webkit-transform: scale(1.15);
+	-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
 img{
 	height:48px;
 	width: 48px;
 	margin-right: 4px;
 	float: left;
-}
-
-#container{
-	width:95%;
 }
 
 #user{
